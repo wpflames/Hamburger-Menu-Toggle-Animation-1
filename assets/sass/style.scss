@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: black;
+}
+
+header{
+    nav{
+        position: relative;
+        #toggle{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            transition: .8s;
+        
+            span{
+                position: relative;
+                width: 36px;
+                height: 4px;
+                background: white;
+                border-radius: 4px;
+                display: block;
+                margin-bottom: 8px;
+                transition: .5s;
+        
+                &:nth-child(1){
+                    transform-origin: left;
+                }
+                &:nth-child(2){
+                    transform-origin: center;
+                }
+                &:nth-child(3){
+                    transform-origin: left;
+                    margin-bottom: 0;
+                }
+            }
+        
+            &.active{
+                width: 55px;
+                transition: .5s;
+                z-index: 9;
+                span{
+                    background: white;
+                }
+                span:nth-child(1){
+                    transform: rotate(45deg);
+                    left: 3px;
+                }
+                span:nth-child(2){
+                    transform: rotate(315deg);
+                    right: 3px;
+                }
+                span:nth-child(3){
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+        }
+        ul#menu{
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: rgba(255,255,255, .1);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .5s;
+            display: flex;
+            flex-direction: column;
+
+            li{
+                list-style: none;
+                font-size: 2rem;
+                line-height: 2;
+
+                a{
+                    color: white;
+                    text-decoration: none;
+                    &:hover{
+                        color: tomato;
+                    }
+                }
+            }
+        }
+        ul#menu.active{
+            left: 0;
+        }
+    }
+}
+#toggle.active ul.menu{
+    transform: translateX(-10%);
+}
